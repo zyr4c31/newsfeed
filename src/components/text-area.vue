@@ -1,5 +1,8 @@
 <template>
-  <textarea :cols="columns" :rows="rows"></textarea>
+  <div>
+    <label>Content: </label>
+    <textarea :cols="columns" :rows="rows"></textarea>
+  </div>
 </template>
 
 <script lang="ts">

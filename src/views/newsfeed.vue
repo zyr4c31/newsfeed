@@ -1,13 +1,13 @@
 <template>
   <Header :header="header" />
   <form @submit.prevent="">
-    <Input :formType="formType" :title="posts" v-model="posts" />
-    <TextArea :columns="columns" :rows="rows" :content="posts" />
+    <Input :formType="formType" :titleText="titleText" />
+    <TextArea :columns="columns" :rows="rows" />
   </form>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent } from 'vue';
 import Header from '@/components/header.vue';
 import Input from '@/components/input.vue';
 import TextArea from '@/components/text-area.vue';
@@ -16,20 +16,16 @@ export default defineComponent({
   name: 'Newsfeed',
   components: { Header, Input, TextArea },
   setup() {
-    const posts = ref([
-      { title: 'This', content: 'This' },
-      { title: 'This', content: 'This' },
-    ]);
     return {
-      posts,
-    };
-  },
-  data() {
-    return {
-      header: 'Newsfeed',
-      formType: 'text',
-      columns: 30,
-      rows: 5,
+      header: 'Newsfeed' as string,
+      formType: 'text' as string,
+      titleText: 'Enter title' as string,
+      contentText: 'Enter content' as string,
+      columns: 30 as number,
+      rows: 5 as number,
+      posts: [
+        { title: 'Sample title', content: 'Sample content' },
+      ],
     };
   },
 });

@@ -9,9 +9,9 @@ import Header from '@/components/header.vue';
 export default defineComponent({
   header: 'Home',
   components: { Header },
-  data() {
+  setup() {
     return {
-      header: 'Zyr Acel Reyes',
+      header: 'Zyr Acel Reyes' as string,
     };
   },
 });

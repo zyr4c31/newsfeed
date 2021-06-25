@@ -1,6 +1,7 @@
 <template>
   <form @submit.prevent>
     <div>
+      <label for="">Title: </label>
       <input />
     </div>
   </form>
@@ -13,6 +14,9 @@ export default defineComponent({
   name: 'Input',
   setup(props) {
     console.log(props);
+    return {
+      props,
+    };
   },
 });
 </script>
