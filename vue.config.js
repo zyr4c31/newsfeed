@@ -1,3 +1,5 @@
 module.exports = {
-    publicPath: '/newsfeed/'
-}
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/newsfeed/'
+    : '/',
+};

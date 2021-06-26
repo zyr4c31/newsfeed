@@ -1,18 +1,11 @@
 <template>
-  <Header :header="header" />
+<h1>Zyr Acel Reyes</h1>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import Header from '@/components/header.vue';
 
 export default defineComponent({
-  header: 'Home',
-  components: { Header },
-  setup() {
-    return {
-      header: 'Zyr Acel Reyes' as string,
-    };
-  },
+  name: 'Home',
 });
 </script>
