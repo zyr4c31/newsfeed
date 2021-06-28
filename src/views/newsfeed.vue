@@ -1,9 +1,4 @@
 <template>
-  <div>
-    <p>Source code @</p>
-    <a href="https://github.com/zyr4c31/newsfeed">this repository</a>
-    <p></p>
-  </div>
   <h1>Newsfeed</h1>
   <form @submit.prevent>
     <div>

@@ -1,10 +1,10 @@
 import { RouteRecordRaw } from 'vue-router';
 
-const routes: RouteRecordRaw[]= [
+const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('../views/Home.vue'),
+    component: () => import('../views/home.vue'),
   },
   {
     path: '/newsfeed',
