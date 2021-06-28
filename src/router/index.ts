@@ -13,6 +13,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Newsfeed',
     component: Newsfeed,
   },
+  {
+    path: '/newsfeed',
+    name: 'Home',
+    component: Home,
+  },
 ];
 
 const router = createRouter({
