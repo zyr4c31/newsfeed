@@ -9,6 +9,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/newsfeed',
     name: 'Newsfeed',
+    alias: '/newsfeed',
     component: () => import('../views/newsfeed.vue'),
   },
 ];
