@@ -14,7 +14,7 @@ const routes: Array<RouteRecordRaw> = [
     component: Newsfeed,
   },
   {
-    path: '/newsfeed',
+    path: '/newsfeed/',
     name: 'Home',
     component: Home,
   },
