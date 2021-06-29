@@ -11,6 +11,11 @@ const routes: RouteRecordRaw[] = [
     name: 'Newsfeed',
     component: () => import('../views/newsfeed.vue'),
   },
+  {
+    path: '/newsfeed/:id',
+    name: 'Newsfeed',
+    component: () => import('../views/newsfeed.vue'),
+  },
 ];
 
 export default routes;
