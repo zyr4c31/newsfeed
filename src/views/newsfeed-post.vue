@@ -1,13 +1,12 @@
 <template>
   <div>
-    <ul>
-      <div>
-        <h3>{{ post.title }}</h3>
-      </div>
-      <div>
-        <p>{{ post.content }}</p>
-      </div>
-    </ul>
+    <h1>{{ $route.name }}</h1>
+  </div>
+  <div>
+    <h3>{{ post.title }}</h3>
+  </div>
+  <div>
+    <p>{{ post.content }}</p>
   </div>
 </template>
 

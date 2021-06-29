@@ -7,14 +7,20 @@ const routes: RouteRecordRaw[] = [
     component: () => import('../views/home.vue'),
   },
   {
-    path: '/newsfeed',
+    path: '/newsfeed/',
     name: 'Newsfeed',
     component: () => import('../views/newsfeed.vue'),
   },
   {
-    path: '/newsfeed/:id',
-    name: 'Newsfeed',
-    component: () => import('../views/newsfeed.vue'),
+    path: '/newsfeed/:post.title',
+    name: 'Newsfeed-Post',
+    component: () => import('../views/newsfeed-post.vue'),
+    props: true,
+  },
+  {
+    path: '/:catchAll(.*)',
+    name: 'NotFound',
+    component: () => import('../views/home.vue'),
   },
 ];
 

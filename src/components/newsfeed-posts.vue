@@ -1,18 +1,16 @@
 <template>
   <div v-for="post in posts" :key="post.title">
-    <ul>
-      <div>
-        <h3 v-show="!post.isCurrentEdit">{{ post.title }}</h3>
-        <input v-show="post.isCurrentEdit" v-model.lazy="post.title" />
-      </div>
-      <div>
-        <p v-show="!post.isCurrentEdit">{{ post.content }}</p>
-        <textarea v-show="post.isCurrentEdit" v-model.lazy="post.content"></textarea>
-      </div>
-      <button @click="singlePost(posts, post.title)">Read</button>
-      <button @click="UseDeletePost(posts, post.title)">Delete</button>
-      <button @click="useLogFunction(posts, post.title)">log</button>
-    </ul>
+    <div>
+      <h3 v-show="!post.isCurrentEdit">{{ post.title }}</h3>
+      <input v-show="post.isCurrentEdit" v-model.lazy="post.title" />
+    </div>
+    <div>
+      <p v-show="!post.isCurrentEdit">{{ post.content }}</p>
+      <textarea v-show="post.isCurrentEdit" v-model.lazy="post.content"></textarea>
+    </div>
+    <button @click="storePost(posts, post.title)">Read</button>
+    <button @click="UseDeletePost(posts, post.title)">Delete</button>
+    <button @click="useLogFunction(posts, post.title)">log</button>
   </div>
 </template>
 
@@ -25,7 +23,6 @@ import UseFindPost from '@/composables/use-find-post';
 
 export default defineComponent({
   name: 'NewsfeedPosts',
-  components: {},
   props: {
     posts: {
       required: true,
@@ -34,14 +31,18 @@ export default defineComponent({
   },
   emits: ['UseStorePost'],
   setup(props, { emit }) {
-    const singlePost = (posts: iPost[], title: string) => UseFindPost(posts, title);
+    let post: iPost | undefined;
+    function storePost(posts: iPost[], title: string) {
+      post = UseFindPost(posts, title);
+    }
+
     const updatePost = (posts: iPost[], title: string) => {
       emit('UseStorePost', [posts, title]);
     };
-
     return {
       props,
-      singlePost,
+      post,
+      storePost,
       UseDeletePost,
       updatePost,
       useLogFunction,
