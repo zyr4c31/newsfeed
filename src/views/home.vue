@@ -1,6 +1,6 @@
 <template>
   <div>
-<h1>Zyr Acel Reyes</h1>
+<a href="http://localhost:8080/"><h1>Zyr Acel Reyes</h1></a>
   </div>
   <div>
     <p>View this site on</p>
