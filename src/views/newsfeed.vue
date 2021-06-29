@@ -11,7 +11,7 @@
       <textarea v-model.lazy="contentInput"></textarea>
     </div>
     <div>
-      <button @click="createPost(titleInput, contentInput)">Create Post</button>
+      <button @click="UseCreatePost(posts, titleInput, contentInput)">Create Post</button>
     </div>
   </form>
   <div v-for="post in posts" :key="post.title">
@@ -25,16 +25,18 @@
       <textarea v-show="post.isCurrentEdit" v-model.lazy="post.content"></textarea>
       </div>
       <button @click="updatePost(post.title)">Read/Update</button>
-      <button @click="deletePost(post.title)">Delete {{ getIndex(post.title) }}</button>
+      <button @click="UseDeletePost(posts, post.title)">
+        Delete</button>
     </ul>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import iPost from '@/interfaces/i-post';
 import ListOfPosts from '@/data/list-of-posts';
-import getIndex from '@/composables/getIndex';
+import UseGetPostIndex from '@/composables/use-get-post-index';
+import UseDeletePost from '@/composables/use-delete-post';
+import UseCreatePost from '@/composables/use-create-post';
 
 export default defineComponent({
   name: 'App',
@@ -43,34 +45,19 @@ export default defineComponent({
     const titleInput = '';
     const contentInput = '';
 
-    function createPost(newTitle: string, newContent: string) {
-      if (getIndex(newTitle) === -1) {
-        const emptyPost: iPost = {
-          title: newTitle,
-          content: newContent,
-          isCurrentEdit: false,
-        };
-        posts.value.unshift(emptyPost);
-      } else {
-        alert('Please input a different title');
-      }
-    }
-
     function updatePost(title: string) {
-      (posts.value[getIndex(title)].isCurrentEdit) = !posts.value[getIndex(title)].isCurrentEdit;
-    }
-
-    function deletePost(title: string) {
-      posts.value.splice(getIndex(title), 1);
+      (posts.value[UseGetPostIndex(posts.value,
+        title)].isCurrentEdit) = !posts.value[UseGetPostIndex(posts.value,
+        title)].isCurrentEdit;
     }
     return {
       posts,
       titleInput,
       contentInput,
-      getIndex,
-      createPost,
+      UseGetPostIndex,
+      UseCreatePost,
       updatePost,
-      deletePost,
+      UseDeletePost,
     };
   },
 });

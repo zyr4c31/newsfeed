@@ -17,13 +17,14 @@
 
 #nav {
   padding: 20px;
+  background-color: rgb(48, 115, 192);
 
   a {
     font-weight: bold;
     color: #2c3e50;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: #501f8f;
     }
   }
 }
