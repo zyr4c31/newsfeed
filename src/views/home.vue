@@ -3,8 +3,10 @@
 <h1>Zyr Acel Reyes</h1>
   </div>
   <div>
+    <p>View this site on</p>
+    <a href="https://zyr4c31.github.io/newsfeed/">github pages!</a>
     <p>Source code @</p>
-    <a href="https://github.com/zyr4c31/newsfeed">this repository</a>
+    <a href="https://github.com/zyr4c31/newsfeed">github.com/zyr4c31/newsfeed</a>
     <p></p>
   </div>
 </template>
