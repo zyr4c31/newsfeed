@@ -8,7 +8,7 @@
       <p v-show="!post.isCurrentEdit">{{ post.content }}</p>
       <textarea v-show="post.isCurrentEdit" v-model.lazy="post.content"></textarea>
     </div>
-    <button @click="storePost(posts, post.title)">Read</button>
+    <router-link to="/post/:post.title"><button>Read</button></router-link>
     <button @click="UseDeletePost(posts, post.title)">Delete</button>
     <button @click="useLogFunction(posts, post.title)">log</button>
   </div>

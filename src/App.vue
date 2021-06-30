@@ -1,7 +1,7 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
-    <router-link :to="{ name: 'Newsfeed' }">Newsfeed</router-link>
+    <router-link to="/newsfeed/">Newsfeed</router-link>
   </div>
   <router-view />
 </template>

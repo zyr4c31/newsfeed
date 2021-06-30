@@ -18,7 +18,7 @@ const routes: RouteRecordRaw[] = [
     props: true,
   },
   {
-    path: '/:catchAll(.*)',
+    path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: () => import('../views/home.vue'),
   },

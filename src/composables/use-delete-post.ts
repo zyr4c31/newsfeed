@@ -1,8 +1,7 @@
 import iPost from '@/interfaces/i-post';
-import UseGetPostIndex from './use-get-post-index';
+import UseGetPostIndex from './use-find-post-index';
 
-function UseDeletePost(posts: iPost[], title: string) {
-  return posts.splice(UseGetPostIndex(posts, title), 1);
-}
+const UseDeletePost = (posts: iPost[], title:
+    string) => posts.splice(UseGetPostIndex(posts, title), 1);
 
 export default UseDeletePost;
