@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h3>{{ }}</h3>
+    <h3>{{ $route.params.title }}</h3>
   </div>
   <div>
-    <p>{{  }}</p>
+    <p>{{ $route }}</p>
   </div>
 </template>
 
@@ -12,6 +12,6 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'NewsfeedPost',
-  props: ['title'],
+  props: ['post'],
 });
 </script>

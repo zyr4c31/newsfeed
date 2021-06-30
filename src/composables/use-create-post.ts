@@ -2,12 +2,12 @@ import iPost from '@/interfaces/i-post';
 import UseGetPostIndex from './use-find-post-index';
 import UseStoreNewPost from './use-store-new-post';
 
-const UseCreatePost = (posts: iPost[], title: string, content: string) => {
+function UseCreatePost(posts: iPost[], title: string, content: string):void {
   if (UseGetPostIndex(posts, title) >= 0) {
     alert('Please input a different title');
   } else {
     posts.unshift(UseStoreNewPost(title, content));
   }
-};
+}
 
 export default UseCreatePost;

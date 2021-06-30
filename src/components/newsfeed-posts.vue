@@ -10,16 +10,15 @@
     </div>
     <button @click="updatePost(post.title)">Read/Update</button>
     <button @click="UseDeletePost(posts, post.title)">Delete</button>
-    <button @click="useLogFunction(posts, post.title)">log</button>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, PropType, ref } from 'vue';
 import iPost from '@/interfaces/i-post';
 import UseDeletePost from '@/composables/use-delete-post';
-import useLogFunction from '@/composables/use-log-function';
 import UseFindPost from '@/composables/use-find-post';
+import router from '@/router';
 
 export default defineComponent({
   name: 'NewsfeedPosts',
@@ -31,13 +30,17 @@ export default defineComponent({
   },
   emits: ['updatePost'],
   setup(props, { emit }) {
+    const readPost = (postToRead: iPost) => {
+      const post = ref(postToRead);
+      router.push({ name: 'Post', params: { post: post.value.title } });
+    };
     const updatePost = (title: string) => emit('updatePost', title);
     return {
       props,
-      UseDeletePost,
-      updatePost,
-      useLogFunction,
       UseFindPost,
+      readPost,
+      updatePost,
+      UseDeletePost,
     };
   },
 });
