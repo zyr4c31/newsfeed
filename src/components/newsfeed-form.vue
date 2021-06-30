@@ -11,13 +11,14 @@
     </div>
     <div>
       <button @click="UseCreatePost(posts, titleInput, contentInput)">Create Post</button>
+      <button @click="clearPost()">Clear Post</button>
     </div>
   </form>
 </template>
 
 <script lang="ts">
+import { defineComponent, PropType, ref } from 'vue';
 import iPost from '@/interfaces/i-post';
-import { defineComponent, PropType } from 'vue';
 import UseCreatePost from '@/composables/use-create-post';
 
 export default defineComponent({
@@ -29,11 +30,14 @@ export default defineComponent({
     },
   },
   setup() {
-    const titleInput = '';
-    const contentInput = '';
-
+    const titleInput = ref('');
+    const contentInput = ref('');
+    const clearPost = () => {
+      titleInput.value = '';
+      contentInput.value = '';
+    };
     return {
-      titleInput, contentInput, UseCreatePost,
+      titleInput, contentInput, UseCreatePost, clearPost,
     };
   },
 });

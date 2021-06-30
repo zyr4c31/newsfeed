@@ -8,7 +8,7 @@
       <p v-show="!post.isCurrentEdit">{{ post.content }}</p>
       <textarea v-show="post.isCurrentEdit" v-model.lazy="post.content"></textarea>
     </div>
-    <router-link to="/post/:post.title"><button>Read</button></router-link>
+    <button @click="updatePost(post.title)">Read/Update</button>
     <button @click="UseDeletePost(posts, post.title)">Delete</button>
     <button @click="useLogFunction(posts, post.title)">log</button>
   </div>
@@ -29,20 +29,11 @@ export default defineComponent({
       type: Array as PropType<iPost[]>,
     },
   },
-  emits: ['UseStorePost'],
+  emits: ['updatePost'],
   setup(props, { emit }) {
-    let post: iPost | undefined;
-    function storePost(posts: iPost[], title: string) {
-      post = UseFindPost(posts, title);
-    }
-
-    const updatePost = (posts: iPost[], title: string) => {
-      emit('UseStorePost', [posts, title]);
-    };
+    const updatePost = (title: string) => emit('updatePost', title);
     return {
       props,
-      post,
-      storePost,
       UseDeletePost,
       updatePost,
       useLogFunction,

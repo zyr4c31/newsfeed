@@ -4,7 +4,7 @@
   <Newsfeed-Form :posts="posts" />
 </div>
 <div>
-  <NewsfeedPosts :posts="posts" />
+  <NewsfeedPosts :posts="posts" @updatePost="updatePost"/>
 </div>
 </template>
 
