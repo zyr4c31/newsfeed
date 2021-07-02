@@ -5,7 +5,7 @@ set -e
 git init
 #!git branch master
 git add -A
-git commit -m 'catch all / 404 implementation'
+git commit -m 'feat: css, constant routes, 404 page, redirect'
 git push -f git@github.com:zyr4c31/newsfeed.git master #! git@github.com:<username>/<repo_name>.git <branch>
 npm run build
 
@@ -13,7 +13,7 @@ cd dist
 
 git init
 git add -A
-git commit -m 'catch all / 404 implementation'
+git commit -m 'github pages deployment'
 git push -f git@github.com:zyr4c31/newsfeed.git master:gh-pages
 
 cd -

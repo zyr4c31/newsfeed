@@ -1,13 +1,10 @@
 <template>
       <form @submit.prevent>
     <div>
-      <label>Title: </label>
-      <input v-model.lazy.trim="titleInput" />
+      <input placeholder="Enter title here" v-model.lazy.trim="titleInput" />
     </div>
-
     <div>
-      <label>Content: </label>
-      <textarea v-model.lazy.trim="contentInput"></textarea>
+      <textarea placeholder="Enter content here" v-model.lazy.trim="contentInput"></textarea>
     </div>
     <div>
       <button @click="createPost(titleInput, contentInput)">Create Post</button>

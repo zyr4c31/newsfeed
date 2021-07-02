@@ -1,3 +1,4 @@
+import Route from '@/constants/route-names';
 import listOfPosts from '@/data/list-of-posts';
 import IPost from '@/interfaces/post';
 import router from '@/router';
@@ -8,8 +9,12 @@ export default function usePost() {
   const titleInput = ref('');
   const contentInput = ref('');
   const isNotEditing = ref(true);
+  const redirectTime = ref(5);
   const goBack = () => router.back();
 
+  const countdown = () => {
+    redirectTime.value -= 1;
+  };
   const stringToPost = (sTitle: string, sContent: string): IPost => {
     const post: IPost = {
       title: sTitle,
@@ -38,7 +43,7 @@ export default function usePost() {
 
   const readPost = (title: string) => {
     const index = findPostIndex(title);
-    router.push({ name: 'Post', params: { index } });
+    router.push({ name: Route.Post, params: { index } });
   };
 
   const deletePost = (post: IPost) => {
@@ -58,6 +63,8 @@ export default function usePost() {
     titleInput,
     contentInput,
     isNotEditing,
+    redirectTime,
+    countdown,
     stringToPost,
     createPost,
     clearFields,
