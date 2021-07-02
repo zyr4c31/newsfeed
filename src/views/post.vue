@@ -22,14 +22,14 @@ export default defineComponent({
   props: {
     index: {
       required: true,
-      type: Number,
+      type: String,
     },
   },
   setup(props) {
     const {
       posts, isNotEditing, goBack, updatePost,
     } = usePost();
-    const post = (posts.value[props.index]);
+    const post = (posts.value[parseInt(props.index, 10)]);
     return {
       post, isNotEditing, goBack, updatePost,
     };
