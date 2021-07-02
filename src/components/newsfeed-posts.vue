@@ -1,47 +1,32 @@
 <template>
   <div v-for="post in posts" :key="post.title">
     <div>
-      <h3 v-show="!post.isCurrentEdit">{{ post.title }}</h3>
-      <input v-show="post.isCurrentEdit" v-model.lazy="post.title" />
+      <h3>{{ post.title }}</h3>
     </div>
     <div>
-      <p v-show="!post.isCurrentEdit">{{ post.content }}</p>
-      <textarea v-show="post.isCurrentEdit" v-model.lazy="post.content"></textarea>
-    </div>
-    <button @click="updatePost(post.title)">Read/Update</button>
-    <button @click="UseDeletePost(posts, post.title)">Delete</button>
+      <p>{{ post.content }}</p>
+ </div>
+    <button @click="readPost(post.title)">Read</button>
+    <button @click="deletePost(post)">Delete</button>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref } from 'vue';
-import iPost from '@/interfaces/i-post';
-import UseDeletePost from '@/composables/use-delete-post';
-import UseFindPost from '@/composables/use-find-post';
-import router from '@/router';
+import { defineComponent, PropType } from 'vue';
+import IPost from '@/interfaces/post';
+import usePost from '@/composables/use-post';
 
 export default defineComponent({
   name: 'NewsfeedPosts',
   props: {
     posts: {
       required: true,
-      type: Array as PropType<iPost[]>,
+      type: Array as PropType<IPost[]>,
     },
   },
-  emits: ['updatePost'],
-  setup(props, { emit }) {
-    const readPost = (postToRead: iPost) => {
-      const post = ref(postToRead);
-      router.push({ name: 'Post', params: { post: post.value.title } });
-    };
-    const updatePost = (title: string) => emit('updatePost', title);
-    return {
-      props,
-      UseFindPost,
-      readPost,
-      updatePost,
-      UseDeletePost,
-    };
+  setup() {
+    const { readPost, findPostIndex, deletePost } = usePost();
+    return { readPost, deletePost, findPostIndex };
   },
 });
 </script>

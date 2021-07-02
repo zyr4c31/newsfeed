@@ -1,20 +1,17 @@
-import iPost from '@/interfaces/i-post';
+import iPost from '@/interfaces/post';
 
-const ListOfPosts: iPost[] = [
+const listOfPosts: iPost[] = [
   {
     title: 'third title',
     content: 'third content',
-    isCurrentEdit: false,
   },
   {
     title: 'second title',
     content: 'second content',
-    isCurrentEdit: false,
   },
   {
     title: 'first title',
     content: 'first content',
-    isCurrentEdit: false,
   }];
 
-export default ListOfPosts;
+export default listOfPosts;

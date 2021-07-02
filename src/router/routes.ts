@@ -12,9 +12,9 @@ const routes: RouteRecordRaw[] = [
     component: () => import('../views/newsfeed.vue'),
   },
   {
-    path: '/post/',
+    path: '/newsfeed/post/:index',
     name: 'Post',
-    component: () => import('../views/newsfeed-post.vue'),
+    component: () => import('../views/post.vue'),
     props: true,
   },
   {

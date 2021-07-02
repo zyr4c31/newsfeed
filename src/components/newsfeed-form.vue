@@ -2,42 +2,39 @@
       <form @submit.prevent>
     <div>
       <label>Title: </label>
-      <input v-model.lazy="titleInput" />
+      <input v-model.lazy.trim="titleInput" />
     </div>
 
     <div>
       <label>Content: </label>
-      <textarea v-model.lazy="contentInput"></textarea>
+      <textarea v-model.lazy.trim="contentInput"></textarea>
     </div>
     <div>
-      <button @click="UseCreatePost(posts, titleInput, contentInput)">Create Post</button>
-      <button @click="clearPost()">Clear Post</button>
+      <button @click="createPost(titleInput, contentInput)">Create Post</button>
+      <button @click="clearFields()">Clear fields</button>
     </div>
   </form>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref } from 'vue';
-import iPost from '@/interfaces/i-post';
-import UseCreatePost from '@/composables/use-create-post';
+import { defineComponent, PropType } from 'vue';
+import IPost from '@/interfaces/post';
+import usePost from '@/composables/use-post';
 
 export default defineComponent({
   name: 'NewsfeedForm',
   props: {
     posts: {
       required: true,
-      type: Array as PropType<iPost[]>,
+      type: Array as PropType<IPost[]>,
     },
   },
   setup() {
-    const titleInput = ref('');
-    const contentInput = ref('');
-    const clearPost = () => {
-      titleInput.value = '';
-      contentInput.value = '';
-    };
+    const {
+      titleInput, contentInput, createPost, clearFields,
+    } = usePost();
     return {
-      titleInput, contentInput, UseCreatePost, clearPost,
+      titleInput, contentInput, clearFields, createPost,
     };
   },
 });
