@@ -34,6 +34,7 @@ export default function usePost() {
     } else {
       posts.value.unshift(stringToPost(title, content));
     }
+    clearFields;
   };
 
   const clearFields = () => {

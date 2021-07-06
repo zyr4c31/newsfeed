@@ -29,7 +29,7 @@ export default defineComponent({
     const {
       posts, isNotEditing, goBack, updatePost,
     } = usePost();
-    const post = (posts.value[parseInt(props.index, 10)]);
+    const post = (posts.value[parseInt(props.index, 0)]);
     return {
       post, isNotEditing, goBack, updatePost,
     };
